@@ -26,4 +26,9 @@ public abstract class Piece {
     }
 
     protected abstract char getIdentifyingCharacter();
+
+    @Override
+    public String toString() {
+        return owner.toString() + " " + this.getClass().getSimpleName();
+    }
 }

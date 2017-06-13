@@ -51,14 +51,24 @@ public class CLITest {
         assertEquals("Should have 13 output calls", 13, output.size());
     }
 
+    @Test(timeout = 1_000)
+    public void testDeadLock() throws Exception {
+        String input =  "move h2 h4" + "\n" +
+                        "move a7 a6" + "\n" +
+                        "list" + "\n";
+//        runCliWithInput(input);
+        new CLI(new ByteArrayInputStream(input.getBytes()), System.out)
+                .startEventLoop();;
+    }
+
     @Test
     public void testNewCommand() throws Exception {
         runCliWithInput("new");
         List<String> output = captureOutput();
 
         assertEquals("Should have had 6 calls to print strings", 6, output.size());
-        assertEquals("It should have printed the board first", 701, output.get(2).length());
-        assertEquals("It should have printed the board again", 701, output.get(4).length());
+        assertEquals("It should have printed the board first", 721, output.get(2).length());
+        assertEquals("It should have printed the board again", 721, output.get(4).length());
     }
 
     @Test

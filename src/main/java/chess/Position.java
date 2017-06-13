@@ -8,6 +8,8 @@ public class Position {
     public static final int MAX_ROW = 8;
     public static final char MIN_COLUMN = 'a';
     public static final char MAX_COLUMN = 'h';
+    public static final int MIN_AXIS = 0;
+    public static final int MAX_AXIS = 7;
     private int row;
     private char column;
 
@@ -36,6 +38,34 @@ public class Position {
 
     public char getColumn() {
         return column;
+    }
+
+    // TODO: not tested
+    public int getX() {
+        switch (column) {
+            case 'a':
+                return 0;
+            case 'b':
+                return 1;
+            case 'c':
+                return 2;
+            case 'd':
+                return 3;
+            case 'e':
+                return 4;
+            case 'f':
+                return 5;
+            case 'g':
+                return 6;
+            case 'h':
+                return 7;
+        }
+        return -1;
+    }
+
+    // TODO not tested
+    public int getY() {
+        return row - 1;
     }
 
     @Override

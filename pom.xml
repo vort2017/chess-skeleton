@@ -11,7 +11,15 @@
     <url>http://maven.apache.org</url>
 
     <properties>
+        <!-- for maven-compiler-plugin -->
+        <maven.compiler.source>${java.vm.specification.version}</maven.compiler.source>
+        <maven.compiler.target>${java.vm.specification.version}</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- for all maven reporting plugins -->
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <!-- libraries version -->
     </properties>
 
     <dependencies>
@@ -40,6 +48,14 @@
                 <version>1.2.1</version>
                 <configuration>
                     <mainClass>chess.CLI</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>
